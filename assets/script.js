@@ -1,8 +1,13 @@
 var doc = document;
+var wrapper = doc.querySelector('.wrapper');
+var navElem = doc.createElement('nav');
+navElem.classList.add('nav');
 
 createDemos();
 createNav();
 addCodeButtons();
+// scrollToStep();
+// addPalette();
 
 // ------------------------------------------
 
@@ -20,15 +25,14 @@ function createDemos () {
       this.target.innerHTML = this.value;
     }
   }
+
+  // scrollToStep();
 }
 
 // ------------------------------------------
 
 function createNav () {
-  var wrapper = doc.querySelector('.wrapper');
   var titles = doc.querySelectorAll('.step:not(.step--hidden) .step__title');
-  var navElem = doc.createElement('nav');
-  navElem.classList.add('nav');
 
   var navItems = [];
 
@@ -42,7 +46,7 @@ function createNav () {
     }
 
     var itemText = item.textContent;
-    item.id = 'step-' + i;
+    item.id = item.id || 'step-' + i;
     var itemLink = '<a href="#' + item.id + '"">' + itemText + '</a>';
 
     navItems.push('<li class="' + itemClass + '">' + itemLink + '</li>');
@@ -50,7 +54,8 @@ function createNav () {
 
   navElem.innerHTML = '<ol class="nav__items">' + navItems.join('\n') + '</ol>';
 
-  wrapper.insertBefore( navElem,  wrapper.firstChild );
+  // wrapper.insertBefore( navElem,  wrapper.firstChild );
+  wrapper.appendChild( navElem );
 
 }
 
@@ -110,3 +115,40 @@ function getNodeContent( elem ) {
 }
 
 // ------------------------------------------
+
+function scrollToStep() {
+  if ( !doc.location.hash ) {
+    return;
+  }
+  var currentElem = doc.querySelector( doc.location.hash );
+  var offsetTop = currentElem.offsetTop;
+
+  window.scrollBy( 0, offsetTop );
+
+  console.log( 'scroll!' );
+}
+
+//---------------------------------------------
+
+function addPalette() {
+  var colors = [
+    'tomato',
+    'darkorange',
+    'gold',
+    'yellowgreen',
+    'lightseagreen',
+    'teal'
+  ];
+
+  var ul = doc.createElement('ul');
+  ul.classList.add('palette');
+
+  colors.forEach( function ( item ) {
+    var li = doc.createElement('li');
+    li.innerHTML = item;
+    li.style.background = item;
+    ul.appendChild( li );
+  })
+
+  doc.body.appendChild( ul );
+}

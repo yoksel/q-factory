@@ -5,7 +5,7 @@ var server = require("browser-sync");
 var copy = require("gulp-copy");
 var del = require("del");
 var zip = require("gulp-zip");
-var projectName = "SVG_SimpleShapes";
+var projectName = "SVG_Decorations";
 
 
 gulp.task("del", function() {
@@ -15,7 +15,7 @@ gulp.task("del", function() {
 });
 
 gulp.task("build",["del"], function() {
-  return gulp.src(["shapes.html","assets/**/*"])
+  return gulp.src(["decoration.html","assets/**/*"])
         .pipe(copy("build/"));
 });
 

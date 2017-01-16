@@ -12,15 +12,17 @@
     "url": ""
   },
   "devDependencies": {
-    "browser-sync": "2.11.1",
+    "browser-sync": "^2.17.5",
+    "colors": "^1.1.2",
     "copy": "^0.2.0",
+    "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-copy": "0.0.2",
-    "gulp-zip": "^3.2.0",
-    "del": "^2.2.0"
+    "gulp-include": "^2.3.1",
+    "gulp-zip": "^3.2.0"
   },
   "scripts": {
-    "start": "npm run gulp serve"
+    "start": "gulp serve"
   },
   "engines": {
     "node": "^5.0.0"
