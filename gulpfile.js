@@ -1,37 +1,49 @@
-"use strict";
+'use strict';
 
-var gulp = require("gulp");
-var server = require("browser-sync");
-var copy = require("gulp-copy");
-var del = require("del");
-var zip = require("gulp-zip");
-var projectName = "SVG_Decorations";
+var gulp = require('gulp');
+var server = require('browser-sync');
+var copy = require('gulp-copy');
+var del = require('del');
+var zip = require('gulp-zip');
+var include = require('gulp-include');
+
+var projectName = 'SVG_Decorations';
 
 
-gulp.task("del", function() {
+gulp.task('del', function() {
   del(['build/']).then(paths => {
     console.log('Deleted files and folders:\n', paths.join('\n'));
   });
 });
 
-gulp.task("build",["del"], function() {
-  return gulp.src(["decoration.html","assets/**/*"])
-        .pipe(copy("build/"));
+gulp.task('build',['del'], function() {
+  return gulp.src(['decoration.html','assets/**/*'])
+        .pipe(copy('build/'));
 });
 
-gulp.task("zip", ["build"], () => {
+gulp.task('zip', ['build'], () => {
   return gulp.src('build/**/*')
-    .pipe(zip(projectName + '.zip'))
-    .pipe(gulp.dest('.'));
+         .pipe(zip(projectName + '.zip'))
+         .pipe(gulp.dest('.'));
 });
 
-gulp.task("serve", function() {
+gulp.task('include', function() {
+  return gulp.src('src/*.html')
+         .pipe(include())
+               .on('error', console.log)
+         .pipe(gulp.dest('.'))
+         .pipe(server.reload({stream: true}));
+});
+
+gulp.task('serve', ['include'], function() {
   server.init({
-    server: ".",
+    server: '.',
     notify: false,
     open: true,
     ui: false
   });
 
-  gulp.watch(["*.html","assets/**/*.*"]).on('change', server.reload);
+  gulp.watch(['assets/**/*.*']).on('change',server.reload);
+  gulp.watch('**/*.html',['include']);
+
 });
