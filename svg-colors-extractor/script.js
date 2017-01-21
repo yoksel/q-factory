@@ -12,7 +12,6 @@ codeInput.oninput = function () {
   htmlOutput.innerHTML = '';
   codeOutput.value = '';
   targetElem.innerHTML = this.value;
-  console.dir( targetElem );
 
   var reg = /(fill|stroke)=['"](.*?)['"]/g;
   var results = this.value.match(reg);
@@ -24,7 +23,6 @@ codeInput.oninput = function () {
   results.forEach( function(item) {
     var regColor = /['"](.*?)['"]/g;
     var color = item.match(regColor)[0].slice(1,-1);
-    console.log(color);
 
     if ( color == 'none' ) {
       return;
@@ -34,6 +32,7 @@ codeInput.oninput = function () {
     // setAttribute was used to prevent convert color to rgb
     var stylesList = [
       'background: ' + color,
+      'border-color: ' + color,
       'color: ' +  textColor( color )
     ]
     colorElem.setAttribute('style', stylesList.join(';'));
