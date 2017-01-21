@@ -25,6 +25,7 @@ BODY {
 CODE {
   padding: 2px 4px;
   border-radius: 3px;
+  border: 1px solid rgba(0,0,0,.2);
 }
 
 .textfield {

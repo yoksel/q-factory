@@ -5,7 +5,7 @@ var codeInput = doc.querySelector('.textfield--input');
 var codeOutput = doc.querySelector('.textfield--output');
 var htmlOutput = doc.querySelector('.visual-output');
 var targetElem = doc.createElement('div');
-var outputList = [];
+var outputList = {};
 
 codeInput.oninput = function () {
   outputList = [];
@@ -28,23 +28,27 @@ codeInput.oninput = function () {
       return;
     }
 
+    outputList[ color ] = color;
+  });
+
+  var colors = Object.keys( outputList );
+
+  colors.forEach( function( color ) {
     var colorElem = doc.createElement('code');
     // setAttribute was used to prevent convert color to rgb
     var stylesList = [
       'background: ' + color,
-      'border-color: ' + color,
       'color: ' +  textColor( color )
-    ]
+    ];
     colorElem.setAttribute('style', stylesList.join(';'));
     colorElem.innerHTML = color;
     outputList.push(colorElem.outerHTML);
-
   });
 
   codeOutput.value = outputList.join(', ');
   htmlOutput.innerHTML = codeOutput.value;
 
-}
+};
 
 //---------------------------------------------
 
