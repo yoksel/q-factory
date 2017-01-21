@@ -6,9 +6,24 @@ var copy = require('gulp-copy');
 var del = require('del');
 var zip = require('gulp-zip');
 var include = require('gulp-include');
+var svgmin = require('gulp-svgmin');
 
-var projectName = 'SVG_Decorations';
+var projectName = 'SVG_Decoration';
 
+gulp.task('svgmin', function () {
+    return gulp.src('src/sketch/*.svg')
+        .pipe(svgmin({
+            plugins: [{
+                cleanupNumericValues: {
+                    floatPrecision: 2
+                }
+            }],
+            js2svg: {
+                pretty: true
+            }
+        }))
+        .pipe(gulp.dest('src/img/svg'));
+});
 
 gulp.task('del', function() {
   del(['build/']).then(paths => {
@@ -31,8 +46,8 @@ gulp.task('include', function() {
   return gulp.src('src/*.html')
          .pipe(include())
                .on('error', console.log)
-         .pipe(gulp.dest('.'))
-         .pipe(server.reload({stream: true}));
+         .pipe(gulp.dest('.'));
+        //  .pipe(server.reload({stream: true}));
 });
 
 gulp.task('serve', ['include'], function() {
