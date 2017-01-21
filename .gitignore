@@ -3,5 +3,8 @@ node_modules/
 pantry/
 *.html
 *.md
+*.zip
 *.txt
+*.log
+*.lock
 .DS_Store
