@@ -1,0 +1,46 @@
+BODY {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #CCC;
+  font: 16px/1.4 Trebuchet MS, Arial, sans-serif;
+}
+
+.wrapper {
+  width: 650px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem 2rem;
+  border: 1px solid #DDD;
+  background: #FFF;
+  box-shadow: 0 0 10px rgba(0,0,0,.5);
+}
+
+.label {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: bold;
+}
+
+CODE {
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.textfield {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 1rem;
+  padding: .5rem;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #DDD;
+  box-shadow: 0 0 5px rgba(0,0,0,.5) inset;
+}
+
+.visual-output {
+  border-radius: 10px;
+  padding: .5rem;
+  border: 1px dashed #DDD;
+  line-height: 1.6;
+}
