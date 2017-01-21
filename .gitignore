@@ -1,0 +1,7 @@
+build/
+node_modules/
+pantry/
+*.html
+*.md
+*.txt
+.DS_Store
