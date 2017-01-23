@@ -1,3 +1,7 @@
+HTML, BODY {
+  height: 100%;
+}
+
 BODY {
   display: flex;
   justify-content: center;
@@ -40,8 +44,9 @@ CODE {
 }
 
 .visual-output {
-  border-radius: 10px;
+  min-height: 20px;
   padding: .5rem;
+  border-radius: 10px;
   border: 1px dashed #DDD;
   line-height: 1.6;
 }
