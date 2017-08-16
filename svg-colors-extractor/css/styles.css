@@ -6,6 +6,8 @@ BODY {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
   background: #CCC;
   font: 16px/1.4 Trebuchet MS, Arial, sans-serif;
 }
@@ -14,7 +16,7 @@ BODY {
   width: 650px;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  padding: 1rem 2rem 2rem;
+  padding: .5rem 2rem 2rem;
   border: 1px solid #DDD;
   background: #FFF;
   box-shadow: 0 0 10px rgba(0,0,0,.5);
@@ -47,6 +49,6 @@ CODE {
   min-height: 20px;
   padding: .5rem;
   border-radius: 10px;
-  border: 1px dashed #DDD;
+  border: 1px solid #DDD;
   line-height: 1.6;
 }
