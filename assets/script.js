@@ -7,7 +7,6 @@ createDemos();
 createNav();
 addCodeButtons();
 // scrollToStep();
-// addPalette();
 
 // ------------------------------------------
 
@@ -82,7 +81,7 @@ function addCodeButtons() {
     button.onclick = function() {
       this.parentElem.classList.toggle('state--show-code');
       this.classList.toggle('button--pressed');
-    }
+    };
   }
 
 }
@@ -129,26 +128,3 @@ function scrollToStep() {
 }
 
 //---------------------------------------------
-
-function addPalette() {
-  var colors = [
-    'tomato',
-    'darkorange',
-    'gold',
-    'yellowgreen',
-    'lightseagreen',
-    'teal'
-  ];
-
-  var ul = doc.createElement('ul');
-  ul.classList.add('palette');
-
-  colors.forEach( function ( item ) {
-    var li = doc.createElement('li');
-    li.innerHTML = item;
-    li.style.background = item;
-    ul.appendChild( li );
-  })
-
-  doc.body.appendChild( ul );
-}
